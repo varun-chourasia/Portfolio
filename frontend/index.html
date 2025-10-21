@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Varun Choursiya - Data Scientist &amp; Python Developer</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <span class="logo-text">VC</span>
+        </div>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#hero" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#certifications" class="nav-link">Certifications</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+      <div class="hero-background">
+        <div class="particles" id="particles"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-photo">
+          <div class="profile-photo-container">
+            <div class="animated-border"></div>
+            <div class="profile-photo">
+              <img src="assets/photo.jpg" alt="Varun Choursiya" />
+            </div>
+          </div>
+        </div>
+        <div class="hero-text">
+          <h1 class="hero-greeting">
+            Hi, I'm <span class="highlight">Varun Choursiya</span>
+          </h1>
+          <h2 class="hero-subtitle">Data Scientist &amp; Python Developer</h2>
+          <p class="hero-tagline">
+            Delivering actionable insights for business growth
+          </p>
+          <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="#contact" class="btn btn-secondary">Contact Me</a>
+            <a href="#" class="btn btn-outline" onclick="downloadResume()"
+              >Download Resume</a
+            >
+          </div>
+        </div>
+        <div class="social-links">
+          <a
+            href="https://github.com/varun-chourasia"
+            target="_blank"
+            class="social-link"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            href="https://linkedin.com/in/varun-chourasia-62b255266"
+            target="_blank"
+            class="social-link"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a
+            href="https://twitter.com/_varunchourasia_"
+            target="_blank"
+            class="social-link"
+          >
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <div class="scroll-arrow"></div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">About Me</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="about-content">
+          <div class="about-info">
+            <p class="about-bio">
+              I am a data-driven professional and Python developer with a strong
+              focus on transforming complex data into actionable intelligence.
+              Skilled in Python, SQL, Excel, Power BI, and Tableau, I specialize
+              in data analysis, visualization, machine learning, and automation
+              to help businesses make smarter, evidence-based decisions. My
+              expertise spans data cleaning, feature engineering, predictive
+              modeling, and dashboard development, with hands-on experience in
+              leveraging analytical insights to improve operational efficiency
+              and business performance. I take pride in writing clean, efficient
+              Python code and building scalable solutions that bridge the gap
+              between data science and software development. I am currently
+              pursuing a Bachelor of Technology in Computer Science at Sushila
+              Devi Bansal College of Engineering, Indore (CGPA: 7.42),
+              graduating in 2026. Passionate about continuous learning, I
+              actively explore emerging technologies in AI, data engineering,
+              and software automation to stay ahead in the evolving tech
+              landscape.
+            </p>
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-number">2+</div>
+                <div class="stat-label">Experience Programs</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Projects Completed</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">7+</div>
+                <div class="stat-label">Certifications</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">7.42</div>
+                <div class="stat-label">CGPA</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Skills &amp; Technologies</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="skills-tabs">
+          <button class="tab-button active" data-tab="programming">
+            Programming
+          </button>
+          <button class="tab-button" data-tab="datascience">
+            Data Science &amp; ML
+          </button>
+          <button class="tab-button" data-tab="visualization">
+            Visualization
+          </button>
+          <button class="tab-button" data-tab="web">Web Tech</button>
+          <button class="tab-button" data-tab="processing">
+            Data Processing
+          </button>
+          <button class="tab-button" data-tab="tools">
+            Tools &amp; Platforms
+          </button>
+          <button class="tab-button" data-tab="databases">Databases</button>
+          <button class="tab-button" data-tab="soft">Soft Skills</button>
+        </div>
+        <div class="skills-grid">
+          <!-- Programming Languages -->
+          <div class="skill-category" data-category="programming">
+            <h3 class="category-title">
+              <i class="fas fa-code"></i>
+              Programming Languages
+            </h3>
+            <div class="skill-list">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Python</span>
+                  <span class="skill-percentage">90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="90"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">SQL</span>
+                  <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">C</span>
+                  <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">C++</span>
+                  <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Science & ML -->
+          <div class="skill-category" data-category="datascience">
+            <h3 class="category-title">
+              <i class="fas fa-brain"></i>
+              Data Science &amp; ML
+            </h3>
+            <div class="skill-list">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Machine Learning</span>
+                  <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Scikit-Learn</span>
+                  <span class="skill-percentage">80%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="80"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Data Analysis</span>
+                  <span class="skill-percentage">90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="90"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">ETL</span>
+                  <span class="skill-percentage">75%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="75"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">NLP</span>
+                  <span class="skill-percentage">75%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="75"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Sentiment Analysis</span>
+                  <span class="skill-percentage">75%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="75"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Time Series Analysis</span>
+                  <span class="skill-percentage">80%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="80"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Clustering</span>
+                  <span class="skill-percentage">80%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="80"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Visualization -->
+          <div class="skill-category" data-category="visualization">
+            <h3 class="category-title">
+              <i class="fas fa-chart-bar"></i>
+              Data Visualization
+            </h3>
+            <div class="skill-list">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Power BI</span>
+                  <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Tableau</span>
+                  <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Matplotlib</span>
+                  <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Seaborn</span>
+                  <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Web Technologies -->
+          <div class="skill-category" data-category="web">
+            <h3 class="category-title">
+              <i class="fas fa-globe"></i>
+              Web Technologies
+            </h3>
+            <div class="skill-list">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">HTML</span>
+                  <span class="skill-percentage">80%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="80"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">CSS</span>
+                  <span class="skill-percentage">75%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="75"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">JavaScript</span>
+                  <span class="skill-percentage">75%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="75"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Flask</span>
+                  <span class="skill-percentage">70%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="70"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">PyQt5</span>
+                  <span class="skill-percentage">70%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="70"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Processing -->
+          <div class="skill-category" data-category="processing">
+            <h3 class="category-title">
+              <i class="fas fa-cogs"></i>
+              Data Processing
+            </h3>
+            <div class="skill-list">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Pandas</span>
+                  <span class="skill-percentage">90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="90"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">NumPy</span>
+                  <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">BeautifulSoup</span>
+                  <span class="skill-percentage">75%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="75"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Selenium</span>
+                  <span class="skill-percentage">75%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="75"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools & Platforms -->
+          <div class="skill-category" data-category="tools">
+            <h3 class="category-title">
+              <i class="fas fa-tools"></i>
+              Tools &amp; Platforms
+            </h3>
+            <div class="skill-list">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">VS Code</span>
+                  <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">PyCharm</span>
+                  <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Jupyter Notebook</span>
+                  <span class="skill-percentage">90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="90"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Git</span>
+                  <span class="skill-percentage">80%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="80"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">GitHub</span>
+                  <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Excel</span>
+                  <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Databases -->
+          <div class="skill-category" data-category="databases">
+            <h3 class="category-title">
+              <i class="fas fa-database"></i>
+              Databases
+            </h3>
+            <div class="skill-list">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">SQL</span>
+                  <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Database Management</span>
+                  <span class="skill-percentage">80%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="80"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">PostgreSQL</span>
+                  <span class="skill-percentage">75%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="75"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Soft Skills -->
+          <div class="skill-category" data-category="soft">
+            <h3 class="category-title">
+              <i class="fas fa-users"></i>
+              Soft Skills
+            </h3>
+            <div class="skill-list">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Analytical Thinking</span>
+                  <span class="skill-percentage">90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="90"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Team Collaboration</span>
+                  <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Leadership</span>
+                  <span class="skill-percentage">80%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="80"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">Problem Solving</span>
+                  <span class="skill-percentage">90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="90"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Featured Projects</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="project-filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="data-science">
+            Data Science
+          </button>
+          <button class="filter-btn" data-filter="web-dev">
+            Web Development
+          </button>
+          <button class="filter-btn" data-filter="machine-learning">
+            Machine Learning
+          </button>
+        </div>
+        <div class="projects-grid">
+          <div class="project-card" data-category="data-science">
+            <div class="project-header">
+              <h3 class="project-title">
+                E-Commerce Sales Analysis: Amazon vs Flipkart
+              </h3>
+              <a
+                href="https://github.com/varun-chourasia"
+                target="_blank"
+                class="project-link"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+            <p class="project-description">
+              Tracked real-time product sales using web scraping (BeautifulSoup,
+              Selenium) and analyzed trends with Pandas. Applied sentiment
+              analysis on customer reviews using AI/ML models to derive consumer
+              insights and product sentiment.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">BeautifulSoup</span>
+              <span class="tech-tag">Selenium</span>
+              <span class="tech-tag">Pandas</span>
+              <span class="tech-tag">AI/ML</span>
+              <span class="tech-tag">Sentiment Analysis</span>
+            </div>
+            <div class="project-features">
+              <span class="feature">Web Scraping</span>
+              <span class="feature">Real-time Analysis</span>
+              <span class="feature">Sentiment Analysis</span>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="data-science">
+            <div class="project-header">
+              <h3 class="project-title">Ride-Hailing Trip Data Insights</h3>
+              <a
+                href="https://github.com/varun-chourasia"
+                target="_blank"
+                class="project-link"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+            <p class="project-description">
+              Performed time series analysis and clustering to identify ride
+              usage patterns across regions and time windows. Built interactive
+              Power BI dashboards to visualize demand trends and support pricing
+              strategy decisions.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Time Series</span>
+              <span class="tech-tag">Clustering</span>
+              <span class="tech-tag">Power BI</span>
+              <span class="tech-tag">Data Visualization</span>
+            </div>
+            <div class="project-features">
+              <span class="feature">Time Series Analysis</span>
+              <span class="feature">Clustering</span>
+              <span class="feature">Interactive Dashboards</span>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="data-science">
+            <div class="project-header">
+              <h3 class="project-title">
+                Stack Overflow Developer Trends Exploration
+              </h3>
+              <a
+                href="https://github.com/varun-chourasia"
+                target="_blank"
+                class="project-link"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+            <p class="project-description">
+              Queried and analyzed developer survey data using SQL and Python to
+              uncover insights on technology usage and preferences. Created
+              Tableau dashboards and used NLP techniques to extract key themes
+              from open-ended survey responses.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Tableau</span>
+              <span class="tech-tag">NLP</span>
+              <span class="tech-tag">Data Analysis</span>
+            </div>
+            <div class="project-features">
+              <span class="feature">SQL Queries</span>
+              <span class="feature">NLP Analysis</span>
+              <span class="feature">Tableau Dashboards</span>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="web-dev">
+            <div class="project-header">
+              <h3 class="project-title">Territory Run</h3>
+              <a
+                href="https://github.com/varun-chourasia/MEOW"
+                target="_blank"
+                class="project-link"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+            <p class="project-description">
+              Full-stack web application with Google OAuth authentication,
+              interactive map integration, and database management. Features
+              user login, real-time map display, and robust backend
+              architecture.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Flask</span>
+              <span class="tech-tag">Google OAuth</span>
+              <span class="tech-tag">PostgreSQL</span>
+            </div>
+            <div class="project-features">
+              <span class="feature">User Authentication</span>
+              <span class="feature">Real-time Maps</span>
+              <span class="feature">Database Integration</span>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="machine-learning">
+            <div class="project-header">
+              <h3 class="project-title">E-commerce Recommendation System</h3>
+              <a
+                href="https://github.com/varun-chourasia/Ecommerce-Recommendation"
+                target="_blank"
+                class="project-link"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+            <p class="project-description">
+              Machine learning-based product recommendation engine using
+              collaborative filtering and content-based algorithms. Analyzes
+              user behavior to provide personalized product suggestions.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Scikit-learn</span>
+              <span class="tech-tag">Pandas</span>
+              <span class="tech-tag">NumPy</span>
+            </div>
+            <div class="project-features">
+              <span class="feature">Recommendation Algorithms</span>
+              <span class="feature">Data Preprocessing</span>
+              <span class="feature">Model Evaluation</span>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="data-science">
+            <div class="project-header">
+              <h3 class="project-title">YouTube Analytics Dashboard</h3>
+              <a
+                href="https://github.com/varun-chourasia/YouTube-analysis"
+                target="_blank"
+                class="project-link"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+            <p class="project-description">
+              Comprehensive data analysis and visualization of YouTube metrics
+              and trends. Provides insights into video performance, audience
+              engagement, and content optimization.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Pandas</span>
+              <span class="tech-tag">Matplotlib</span>
+              <span class="tech-tag">Seaborn</span>
+            </div>
+            <div class="project-features">
+              <span class="feature">Data Visualization</span>
+              <span class="feature">Statistical Analysis</span>
+              <span class="feature">Trend Analysis</span>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="data-science">
+            <div class="project-header">
+              <h3 class="project-title">Data Analytics Portfolio</h3>
+              <a
+                href="https://github.com/varun-chourasia/Data-Analytics-Projects"
+                target="_blank"
+                class="project-link"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+            <p class="project-description">
+              Collection of diverse data analysis projects showcasing
+              statistical techniques, exploratory data analysis, and insight
+              generation across multiple domains and datasets.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Jupyter Notebook</span>
+              <span class="tech-tag">NumPy</span>
+              <span class="tech-tag">Pandas</span>
+              <span class="tech-tag">Statistics</span>
+            </div>
+            <div class="project-features">
+              <span class="feature">Multiple Datasets</span>
+              <span class="feature">Statistical Tests</span>
+              <span class="feature">Visualization</span>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="web-dev">
+            <div class="project-header">
+              <h3 class="project-title">Erudite Learning Platform</h3>
+              <a
+                href="https://github.com/varun-chourasia/erudite"
+                target="_blank"
+                class="project-link"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+            <p class="project-description">
+              Interactive online learning platform with modern UI/UX design.
+              Provides seamless user experience with responsive layouts and
+              engaging educational content delivery.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+            <div class="project-features">
+              <span class="feature">Responsive Design</span>
+              <span class="feature">Interactive Elements</span>
+              <span class="feature">User-friendly Interface</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Certifications</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="certifications-grid">
+          <div class="cert-card cert-card--in-progress">
+            <div class="cert-icon cert-icon--in-progress">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="cert-info">
+              <h3 class="cert-name">
+                Generative AI <span class="cert-badge-new">⭐ NEW</span>
+              </h3>
+              <p class="cert-issuer">GeeksforGeeks (GFG)</p>
+              <p class="cert-date">Currently Pursuing (2025)</p>
+              <div class="cert-status-badge">
+                <i class="fas fa-clock"></i> In Progress
+              </div>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="cert-info">
+              <h3 class="cert-name">Introduction to Tableau</h3>
+              <p class="cert-issuer">Simplilearn</p>
+              <p class="cert-date">May 2025</p>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <div class="cert-info">
+              <h3 class="cert-name">Intro to ML</h3>
+              <p class="cert-issuer">Kaggle</p>
+              <p class="cert-date">Mar 2025</p>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon">
+              <i class="fas fa-chart-bar"></i>
+            </div>
+            <div class="cert-info">
+              <h3 class="cert-name">Data Visualization</h3>
+              <p class="cert-issuer">Kaggle</p>
+              <p class="cert-date">Feb 2025</p>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon">
+              <i class="fas fa-database"></i>
+            </div>
+            <div class="cert-info">
+              <h3 class="cert-name">Databases for Developers</h3>
+              <p class="cert-issuer">Oracle</p>
+              <p class="cert-date">Feb 2025</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Experience &amp; Timeline</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item timeline-item--featured">
+            <div class="timeline-dot timeline-dot--primary"></div>
+            <div class="timeline-content timeline-content--featured">
+              <div class="timeline-period">Apr 2025</div>
+              <div class="timeline-type">Virtual Internship</div>
+              <h3 class="timeline-title">BCG Data Science Job Simulation</h3>
+              <h4 class="timeline-org">
+                <i class="fas fa-building"></i> BCG via Forage
+              </h4>
+              <p class="timeline-description">
+                Completed virtual experience program focusing on real-world data
+                science applications. Worked on business problem-solving using
+                data analysis, customer churn prediction, and presenting
+                insights to stakeholders. Applied Python for data exploration
+                and machine learning model development.
+              </p>
+              <div class="timeline-skills">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Data Analysis</span>
+                <span class="skill-tag">Machine Learning</span>
+                <span class="skill-tag">Business Analytics</span>
+                <span class="skill-tag">Stakeholder Communication</span>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-period">2025</div>
+              <div class="timeline-type">Internship</div>
+              <h3 class="timeline-title">
+                Professional Skills Job Simulation Internship
+              </h3>
+              <h4 class="timeline-org">Corporate Training Program</h4>
+              <p class="timeline-description">
+                Engaged in self-assessment and corporate readiness training to
+                align personal strengths with professional expectations.
+                Developed a user manual and career development plan to enhance
+                early-career growth and workplace professionalism.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-period">2022-2026</div>
+              <div class="timeline-type">Education</div>
+              <h3 class="timeline-title">B.Tech in Computer Science</h3>
+              <h4 class="timeline-org">
+                Sushila Devi Bansal College of Engineering, Indore
+              </h4>
+              <p class="timeline-description">
+                CGPA 7.42 | Focusing on Data Science, Machine Learning, and
+                Software Development. Completed coursework in algorithms, data
+                structures, databases, and advanced programming.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-period">2024-2025</div>
+              <div class="timeline-type">Projects</div>
+              <h3 class="timeline-title">Project Development</h3>
+              <h4 class="timeline-org">Academic &amp; Personal Projects</h4>
+              <p class="timeline-description">
+                Developed multiple data science and web development projects
+                demonstrating practical application of technical skills
+                including machine learning, data visualization, and full-stack
+                development.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Let's Work Together!</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="contact-content">
+          <div class="contact-info">
+            <h3>Get in touch</h3>
+            <p>
+              I'm always interested in new opportunities and collaborations.
+              Feel free to reach out!
+            </p>
+            <div class="contact-links">
+              <a href="mailto:chourasiavarun16@gmail.com" class="contact-link">
+                <i class="fas fa-envelope"></i>
+                chourasiavarun16@gmail.com
+              </a>
+              <a href="tel:+919752875092" class="contact-link">
+                <i class="fas fa-phone"></i>
+                +91 975-287-5092
+              </a>
+              <a
+                href="https://wa.me/919752875092"
+                target="_blank"
+                class="contact-link"
+              >
+                <i class="fab fa-whatsapp"></i>
+                WhatsApp
+              </a>
+              <a
+                href="https://github.com/varun-chourasia"
+                target="_blank"
+                class="contact-link"
+              >
+                <i class="fab fa-github"></i>
+                GitHub
+              </a>
+              <a
+                href="https://linkedin.com/in/varun-chourasia-62b255266"
+                target="_blank"
+                class="contact-link"
+              >
+                <i class="fab fa-linkedin"></i>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form id="contactForm">
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Your Email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="Your Phone"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Your Message"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full-width">
+                <i class="fas fa-paper-plane"></i>
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-info">
+            <h3>Varun Choursiya</h3>
+            <p>Data Scientist &amp; Python Developer</p>
+            <div class="footer-contact">
+              <p><i class="fas fa-envelope"></i> chourasiavarun16@gmail.com</p>
+              <p><i class="fas fa-phone"></i> +91 975-287-5092</p>
+              <p><i class="fas fa-map-marker-alt"></i> Indore, India</p>
+            </div>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#certifications">Certifications</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-social-section">
+            <h4>Connect With Me</h4>
+            <div class="footer-social">
+              <a href="https://github.com/varun-chourasia" target="_blank">
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="https://linkedin.com/in/varun-chourasia-62b255266"
+                target="_blank"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="https://twitter.com/_varunchourasia_" target="_blank">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://wa.me/919752875092" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 Varun Choursiya. All rights reserved. | Built with
+            passion for data science
+          </p>
+        </div>
+      </div>
+      <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+      </button>
+    </footer>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

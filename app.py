@@ -13,8 +13,8 @@ load_dotenv()
 
 # Initialize Flask app
 app = Flask(__name__, 
-            static_folder='../frontend',
-            template_folder='../frontend')
+            static_folder='templates/',
+            template_folder='templates/')
 
 # Configuration
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
@@ -51,15 +51,15 @@ def index():
 
 @app.route('/assets/<path:filename>')
 def serve_assets(filename):
-    return send_from_directory('../frontend/assets', filename)
+    return send_from_directory('templates/assets', filename)
 
 @app.route('/css/<path:filename>')
 def serve_css(filename):
-    return send_from_directory('../frontend/css', filename)
+    return send_from_directory('templates/css', filename)
 
 @app.route('/js/<path:filename>')
 def serve_js(filename):
-    return send_from_directory('../frontend/js', filename)
+    return send_from_directory('templates/js', filename)
 
 # Health check endpoint
 @app.route('/api/health')

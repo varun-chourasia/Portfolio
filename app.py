@@ -18,10 +18,7 @@ app = Flask(__name__,
 
 # Configuration
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-basedir = os.path.abspath(os.path.dirname(__file__))
-db_path = os.path.join(basedir, 'database', 'portfolio.db')
-os.makedirs(os.path.dirname(db_path), exist_ok=True)
-app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER', 'smtp.gmail.com')
 app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT', 587))

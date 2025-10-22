@@ -25,7 +25,6 @@ function downloadResume() {
         button.disabled = false;
     }, 1000);
 }
-
 // Make downloadResume function globally available
 window.downloadResume = downloadResume;
 
@@ -201,10 +200,9 @@ function initContactForm() {
     const contactForm = document.getElementById('contactForm');
     if (!contactForm) return;
     
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        // Get form data
         const formData = {
             name: document.getElementById('name').value,
             email: document.getElementById('email').value,
@@ -212,26 +210,33 @@ function initContactForm() {
             message: document.getElementById('message').value
         };
         
-        // Simulate form submission
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
-        
+
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
-        
-        // Simulate API call
-        setTimeout(() => {
-            submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-            submitBtn.style.background = '#00d9ff';
-            
-            // Reset form
-            setTimeout(() => {
+
+        try {
+            const response = await fetch('/api/contact/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                alert('Message sent successfully!');
                 contactForm.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-                submitBtn.style.background = '';
-            }, 2000);
-        }, 1500);
+            } else {
+                alert('Error: ' + (result.error || 'Failed to send message'));
+            }
+        } catch (error) {
+            alert('Failed to send message. Please check your connection.');
+        } finally {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            submitBtn.style.background = '';
+        }
     });
 }
 
@@ -529,8 +534,6 @@ function initProjectFilters() {
     });
 }
 
-
-
 // Enhanced animations for new elements
 function initEnhancedAnimations() {
     // Animate certifications on scroll
@@ -589,7 +592,7 @@ function validateContactForm() {
     const phoneInput = document.getElementById('phone');
     if (phoneInput) {
         phoneInput.addEventListener('input', function() {
-            const phonePattern = /^[\+]?[1-9][\d]{0,15}$/;
+            const phonePattern = /^[\\+]?[1-9][\\d]{0,15}$/;
             if (!phonePattern.test(this.value) && this.value.length > 0) {
                 this.style.borderColor = '#ff6b6b';
             } else {

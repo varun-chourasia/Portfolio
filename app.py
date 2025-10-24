@@ -21,11 +21,7 @@ app = Flask(
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default-secret-key')
 
 # Use DATABASE_URL (Render default), fallback to local Postgres for development
-app.config['SQLALCHEMY_DATABASE_URI'] = (
-    os.getenv('DATABASE_URL') or
-    os.getenv('SQLALCHEMY_DATABASE_URI') or
-    'postgresql://postgres:2004@localhost:5432/portfolio_db'
-)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -87,6 +83,6 @@ def internal_error(e):
 
 # --- Main Entry Point ---
 if __name__ == '__main__':
-    port = int(os.getenv('PORT', 10000))  # Render usually assigns PORT dynamically
+    port = int(os.environ('PORT'))  # Render usually assigns PORT dynamically
     debug = os.getenv('FLASK_ENV', 'production') == 'development'
     app.run(host='0.0.0.0', port=port, debug=debug)

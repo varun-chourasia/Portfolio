@@ -6,7 +6,7 @@ from email.mime.multipart import MIMEMultipart
 
 mail = Mail()
 
-def send_contact_notification(name, email, message):
+def send_contact_notification(name, email,phone, message):
     """Send email notification when contact form is submitted"""
     try:
         recipient = current_app.config.get('MAIL_USERNAME')
@@ -20,6 +20,7 @@ def send_contact_notification(name, email, message):
         msg['Subject'] = f'New Portfolio Contact: {name}'
         msg['From'] = current_app.config.get('MAIL_DEFAULT_SENDER')
         msg['To'] = recipient
+        msg['Reply-To'] = email
         
         # Email body
         html = f"""
@@ -29,6 +30,8 @@ def send_contact_notification(name, email, message):
                 <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px;">
                     <p><strong>Name:</strong> {name}</p>
                     <p><strong>Email:</strong> {email}</p>
+                    <p><strong>Number:</strong> {phone}</p>
+                    
                     <p><strong>Message:</strong></p>
                     <p style="background-color: white; padding: 15px; border-left: 4px solid #00d9ff;">
                         {message}
@@ -46,7 +49,8 @@ def send_contact_notification(name, email, message):
         
         Name: {name}
         Email: {email}
-        
+        Phone: {phone}
+
         Message:
         {message}
         """

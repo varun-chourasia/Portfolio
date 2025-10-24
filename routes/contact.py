@@ -25,7 +25,7 @@ def submit_contact():
         if not validate_email(email):
             return jsonify({'error': 'Invalid email address'}), 400
         
-        if not message or len(message) < 10:
+        if not message or len(message) < 5:
             return jsonify({'error': 'Message must be at least 10 characters'}), 400
         
         if phone and not validate_phone(phone):
@@ -44,7 +44,7 @@ def submit_contact():
         
         # Send email notification (optional)
         try:
-            send_contact_notification(name, email, message)
+            send_contact_notification(name, email,phone, message)
         except Exception as e:
             print(f"Email notification failed: {str(e)}")
         

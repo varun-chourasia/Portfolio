@@ -17,12 +17,17 @@ app = Flask(
     template_folder='templates/'
 )
 
-# --- Configuration ---
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default-secret-key')
+# Configuration
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
-# Use DATABASE_URL (Render default), fallback to local Postgres for development
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL') + "?sslmode=require"
+# Render Postgres connection
+db_url = os.getenv('DATABASE_URL')
+if db_url and db_url.startswith("postgres://"):
+    db_url = db_url.replace("postgres://", "postgresql://", 1)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = db_url + "?sslmode=require"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 
 # Optional: Mail configuration (only if you use Flask-Mail)
 app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER', 'smtp.gmail.com')
@@ -49,7 +54,7 @@ with app.app_context():
 # --- Frontend Routes ---
 @app.route('/')
 def index():
-    return render_template('templates/index.html')
+    return render_template('index.html')
 
 @app.route('/assets/<path:filename>')
 def serve_assets(filename):

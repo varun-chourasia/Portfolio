@@ -142,6 +142,8 @@
   --container-md: 768px;
   --container-lg: 1024px;
   --container-xl: 1280px;
+
+  user-select: none;
 }
 
 /* Dark mode colors */

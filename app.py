@@ -75,6 +75,14 @@ def health_check():
         'status': 'healthy',
         'timestamp': datetime.now().isoformat()
     })
+@app.route("/test-db")
+def test_db():
+    try:
+        from app import db
+        db.session.execute("SELECT 1")
+        return "✅ Database connected successfully!"
+    except Exception as e:
+        return f"❌ Database error: {e}"
 
 # --- Error Handlers ---
 @app.errorhandler(404)

@@ -11,12 +11,12 @@ class Config:
 class DevelopmentConfig(Config):
     """Development configuration"""
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///database/portfolio.db'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://varun:iajx34xhXWB5TiByeyynPIbyAThRgd9l@dpg-d3tkth1r0fns73aiuh50-a/portfloio_db'
     
 class ProductionConfig(Config):
     """Production configuration"""
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:///database/portfolio.db')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
     
 class TestingConfig(Config):
     """Testing configuration"""

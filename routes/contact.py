@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, current_app
 from models import db, ContactMessage
 from utils.validators import validate_email, validate_phone
 from utils.email_sender import send_contact_notification
@@ -15,8 +15,8 @@ def submit_contact():
         # Validate required fields
         name = data.get('name', '').strip()
         email = data.get('email', '').strip()
-        message = data.get('message', '').strip()
         phone = data.get('phone', '').strip()
+        message = data.get('message', '').strip()
         
         # Validation
         if not name or len(name) < 2:
@@ -70,6 +70,7 @@ def get_messages():
         }), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
 
 @contact_bp.route('/messages/<int:message_id>/read', methods=['PUT'])
 def mark_as_read(message_id):

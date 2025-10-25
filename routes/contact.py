@@ -8,11 +8,12 @@ import re
 contact_bp = Blueprint('contact', __name__)
 
 def send_email_async(name, email, phone, message):
-    app = current_app._get_current_object()  # Get real app instance
+    app = current_app._get_current_object()  # get real app instance
     def task():
         with app.app_context():
             send_contact_notification(name, email, phone, message)
     Thread(target=task).start()
+
 
 @contact_bp.route('/submit', methods=['POST'])
 def submit_contact():

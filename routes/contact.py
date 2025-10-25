@@ -44,7 +44,7 @@ def submit_contact():
         
         # Send email notification (optional)
         try:
-            send_contact_notification(name, email, message)
+            send_contact_notification(name, email,phone, message)
         except Exception as e:
             print(f"Email notification failed: {str(e)}")
         

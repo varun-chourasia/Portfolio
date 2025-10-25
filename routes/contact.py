@@ -54,11 +54,10 @@ def submit_contact():
         # DEBUG: Print what email config is being used
         print("=" * 60)
         print("📧 EMAIL CONFIGURATION DEBUG:")
-        print(f"MAIL_SERVER: {current_app.config.get('MAIL_SERVER')}")
-        print(f"MAIL_PORT: {current_app.config.get('MAIL_PORT')}")
-        print(f"MAIL_USERNAME: {current_app.config.get('MAIL_USERNAME')}")
-        print(f"MAIL_PASSWORD (first 20 chars): {current_app.config.get('MAIL_PASSWORD')[:20]}...")
+        print(f"MAIL_DEFAULT_SENDER: {current_app.config.get('MAIL_DEFAULT_SENDER')}")
+        print(f"BREVO_API_KEY: {'set' if current_app.config.get('BREVO_API_KEY') else 'not set'}")
         print("=" * 60)
+
         
         # Send email asynchronously
         send_email_async(name, email, phone, message)

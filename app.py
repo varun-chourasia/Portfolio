@@ -40,7 +40,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
 # ✅ BREVO EMAIL CONFIGURATION
-app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER', 'smtp-relay.brevo.com')
+# app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER', 'smtp-relay.brevo.com')
 # Brevo API Config
 app.config['BREVO_API_KEY'] = os.getenv('BREVO_API_KEY')
 app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER')
@@ -95,7 +95,7 @@ def health_check():
     return jsonify({
         'status': 'healthy',
         'timestamp': datetime.now().isoformat(),
-        'email_configured': bool(os.getenv('MAIL_USERNAME'))
+        'email_configured': bool(os.getenv('MAIL_DEFAULT_SENDER') and os.getenv('BREVO_API_KEY'))
     })
 
 

@@ -18,7 +18,7 @@ def send_contact_notification(name, email, phone, message):
         headers = {
             "accept": "application/json",
             "content-type": "application/json",
-            "api-key": api_key
+            "api-key": os.getenv("BREVO_API_KEY")
         }
         data = {
             "sender": {"name": "Portfolio Contact", "email": sender_email},
@@ -56,12 +56,9 @@ def send_contact_notification(name, email, phone, message):
         }
 
         response = requests.post(url, json=data, headers=headers)
-        if response.status_code == 201:
-            print("✅ Email sent successfully using Brevo API")
-            return True
-        else:
-            print("❌ Failed to send email via Brevo API:", response.text)
-            return False
+        print("Brevo API response:", response.status_code, response.text)
+        return response.status_code == 201
+
 
     except Exception as e:
         traceback.print_exc(file=sys.stderr)

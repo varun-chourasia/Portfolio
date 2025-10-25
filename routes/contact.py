@@ -13,9 +13,11 @@ def send_email_async(app, name, email, phone, message):
     """Send email in background thread with app context"""
     with app.app_context():
         try:
+            print(f"📧 Starting email send to {app.config.get('MAIL_USERNAME')}")
             send_contact_notification(name, email, phone, message)
+            print("✅ Email sent successfully!")
         except Exception as e:
-            print(f"Email sending failed: {str(e)}")
+            print(f"❌ Email sending failed: {str(e)}")
 
 
 @contact_bp.route('/submit', methods=['POST'])
@@ -54,6 +56,15 @@ def submit_contact():
         db.session.add(contact)
         db.session.commit()
         
+        # Debug: Print email config
+        print("=" * 50)
+        print(f"📧 Email Config Check:")
+        print(f"MAIL_SERVER: {current_app.config.get('MAIL_SERVER')}")
+        print(f"MAIL_PORT: {current_app.config.get('MAIL_PORT')}")
+        print(f"MAIL_USERNAME: {current_app.config.get('MAIL_USERNAME')}")
+        print(f"MAIL_PASSWORD: {'*' * 10 if current_app.config.get('MAIL_PASSWORD') else 'NOT SET'}")
+        print("=" * 50)
+        
         # Send email notification in background with app context
         thread = threading.Thread(
             target=send_email_async,
@@ -61,6 +72,7 @@ def submit_contact():
         )
         thread.daemon = True
         thread.start()
+        print("🚀 Email thread started")
         
         return jsonify({
             'success': True,
@@ -70,6 +82,7 @@ def submit_contact():
         
     except Exception as e:
         db.session.rollback()
+        print(f"❌ Server error: {str(e)}")
         return jsonify({'error': f'Server error: {str(e)}'}), 500
 
 

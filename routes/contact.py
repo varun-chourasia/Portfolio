@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, current_app
 from models import db, ContactMessage
 from utils.validators import validate_email, validate_phone
 from utils.email_sender import send_contact_notification
@@ -9,14 +9,13 @@ import re
 contact_bp = Blueprint('contact', __name__)
 
 
-def send_email_async(name, email, phone, message):
-    """Send email in background thread to avoid blocking"""
-    thread = threading.Thread(
-        target=send_contact_notification,
-        args=(name, email, phone, message)
-    )
-    thread.daemon = True
-    thread.start()
+def send_email_async(app, name, email, phone, message):
+    """Send email in background thread with app context"""
+    with app.app_context():
+        try:
+            send_contact_notification(name, email, phone, message)
+        except Exception as e:
+            print(f"Email sending failed: {str(e)}")
 
 
 @contact_bp.route('/submit', methods=['POST'])
@@ -55,11 +54,13 @@ def submit_contact():
         db.session.add(contact)
         db.session.commit()
         
-        # Send email notification in background (non-blocking)
-        try:
-            send_email_async(name, email, phone, message)
-        except Exception as e:
-            print(f"Email notification failed: {str(e)}")
+        # Send email notification in background with app context
+        thread = threading.Thread(
+            target=send_email_async,
+            args=(current_app._get_current_object(), name, email, phone, message)
+        )
+        thread.daemon = True
+        thread.start()
         
         return jsonify({
             'success': True,

@@ -2,9 +2,13 @@ from flask import Blueprint, request, jsonify, current_app
 from models import db, ContactMessage
 from utils.validators import validate_email, validate_phone
 from utils.email_sender import send_contact_notification
+from threading import Thread
 import re
 
 contact_bp = Blueprint('contact', __name__)
+
+def send_email_async(name, email, phone, message):
+    Thread(target=send_contact_notification, args=(name, email, phone, message)).start()
 
 @contact_bp.route('/submit', methods=['POST'])
 def submit_contact():
@@ -51,14 +55,8 @@ def submit_contact():
         print(f"MAIL_PASSWORD (first 20 chars): {current_app.config.get('MAIL_PASSWORD')[:20]}...")
         print("=" * 60)
         
-        # TEMPORARY: Direct email call (no threading) to see errors
-        try:
-            send_contact_notification(name, email, phone, message)
-            print("✅ Email sent successfully!")
-        except Exception as e:
-            print(f"❌ Email error: {str(e)}")
-            import traceback
-            print(traceback.format_exc())
+        # Send email asynchronously
+        send_email_async(name, email, phone, message)
         
         return jsonify({
             'success': True,
@@ -70,6 +68,7 @@ def submit_contact():
         db.session.rollback()
         print(f"❌ Server error: {str(e)}")
         return jsonify({'error': f'Server error: {str(e)}'}), 500
+
 
 @contact_bp.route('/messages', methods=['GET'])
 def get_messages():

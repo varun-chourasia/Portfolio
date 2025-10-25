@@ -1,99 +1,87 @@
-from flask import Blueprint, request, jsonify, current_app
-from models import db, ContactMessage
-from utils.validators import validate_email, validate_phone
-from utils.email_sender import send_contact_notification
-import threading
-import re
+from flask import Blueprint, request, jsonify
+from models import db, PortfolioVisit
+from datetime import datetime, timedelta
 
+portfolio_bp = Blueprint('portfolio', __name__)
 
-contact_bp = Blueprint('contact', __name__)
+# Portfolio data
+PORTFOLIO_DATA = {
+    "profile": {
+        "name": "Varun Choursiya",
+        "title": "Data Scientist",
+        "email": "chourasiavarun16@gmail.com",
+        "phone": "+91 975-287-5092",
+        "location": "Indore, India",
+        "github": "https://github.com/varun-chourasia",
+        "linkedin": "https://linkedin.com/in/varun-chourasia-62b255266/",
+        "twitter": "https://twitter.com/_varunchourasia_"
+    },
+    "stats": {
+        "experience_programs": "2+",
+        "projects": "15+",
+        "certifications": "7+",
+        "cgpa": "7.42"
+    }
+}
 
+@portfolio_bp.route('/data', methods=['GET'])
+def get_portfolio_data():
+    """Get complete portfolio data"""
+    return jsonify(PORTFOLIO_DATA), 200
 
-def send_email_async(app, name, email, phone, message):
-    """Send email in background thread with app context"""
-    with app.app_context():
-        try:
-            send_contact_notification(name, email, phone, message)
-        except Exception as e:
-            print(f"Email sending failed: {str(e)}")
-
-
-@contact_bp.route('/submit', methods=['POST'])
-def submit_contact():
-    """Handle contact form submission"""
+@portfolio_bp.route('/track-visit', methods=['POST'])
+def track_visit():
+    """Track portfolio visit"""
     try:
-        data = request.get_json()
+        ip_address = request.remote_addr
+        user_agent = request.headers.get('User-Agent', '')
         
-        # Validate required fields
-        name = data.get('name', '').strip()
-        email = data.get('email', '').strip()
-        message = data.get('message', '').strip()
-        phone = data.get('phone', '').strip()
-        
-        # Validation
-        if not name or len(name) < 2:
-            return jsonify({'error': 'Name must be at least 2 characters'}), 400
-        
-        if not validate_email(email):
-            return jsonify({'error': 'Invalid email address'}), 400
-        
-        if not message or len(message) < 5:
-            return jsonify({'error': 'Message must be at least 10 characters'}), 400
-        
-        if phone and not validate_phone(phone):
-            return jsonify({'error': 'Invalid phone number'}), 400
-        
-        # Create new contact message
-        contact = ContactMessage(
-            name=name,
-            email=email,
-            phone=phone if phone else None,
-            message=message
+        visit = PortfolioVisit(
+            ip_address=ip_address,
+            user_agent=user_agent
         )
-        
-        db.session.add(contact)
+        db.session.add(visit)
         db.session.commit()
         
-        # Send email notification in background with app context
-        thread = threading.Thread(
-            target=send_email_async,
-            args=(current_app._get_current_object(), name, email, phone, message)
-        )
-        thread.daemon = True
-        thread.start()
-        
-        return jsonify({
-            'success': True,
-            'message': 'Thank you for your message! I will get back to you soon.',
-            'data': contact.to_dict()
-        }), 201
-        
+        return jsonify({'success': True}), 201
     except Exception as e:
-        db.session.rollback()
-        return jsonify({'error': f'Server error: {str(e)}'}), 500
+        return jsonify({'error': str(e)}), 500
 
-
-@contact_bp.route('/messages', methods=['GET'])
-def get_messages():
-    """Get all contact messages (admin only - add authentication)"""
+@portfolio_bp.route('/stats', methods=['GET'])
+def get_stats():
+    """Get portfolio statistics"""
     try:
-        messages = ContactMessage.query.order_by(ContactMessage.created_at.desc()).all()
+        total_visits = PortfolioVisit.query.count()
+        
+        # Visits in last 7 days
+        seven_days_ago = datetime.utcnow() - timedelta(days=7)
+        recent_visits = PortfolioVisit.query.filter(
+            PortfolioVisit.visited_at >= seven_days_ago
+        ).count()
+        
+        # Total messages
+        from models import ContactMessage
+        total_messages = ContactMessage.query.count()
+        unread_messages = ContactMessage.query.filter_by(is_read=False).count()
+        
         return jsonify({
-            'success': True,
-            'count': len(messages),
-            'messages': [msg.to_dict() for msg in messages]
+            'total_visits': total_visits,
+            'recent_visits': recent_visits,
+            'total_messages': total_messages,
+            'unread_messages': unread_messages
         }), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-
-@contact_bp.route('/messages/<int:message_id>/read', methods=['PUT'])
-def mark_as_read(message_id):
-    """Mark message as read (admin only - add authentication)"""
+@portfolio_bp.route('/download-resume', methods=['GET'])
+def download_resume():
+    """Endpoint for resume download tracking"""
     try:
-        message = ContactMessage.query.get_or_404(message_id)
-        message.is_read = True
-        db.session.commit()
-        return jsonify({'success': True, 'message': 'Message marked as read'}), 200
+        # Log resume download
+        # You can add tracking logic here
+        return jsonify({
+            'success': True,
+            'message': 'Resume download initiated'
+        }), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500

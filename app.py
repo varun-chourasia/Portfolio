@@ -62,15 +62,15 @@ def index():
 
 @app.route('/assets/<path:filename>')
 def serve_assets(filename):
-    return send_from_directory('templates/assets', filename)
+    return send_from_directory('static/assets', filename)
 
 @app.route('/css/<path:filename>')
 def serve_css(filename):
-    return send_from_directory('templates/css', filename)
+    return send_from_directory('static/css', filename)
 
 @app.route('/js/<path:filename>')
 def serve_js(filename):
-    return send_from_directory('templates/js', filename)
+    return send_from_directory('static/js', filename)
 
 # --- Health Check ---
 @app.route('/api/health')

@@ -125,7 +125,7 @@ def internal_error(e):
 # --- Main Entry Point ---
 if __name__ == '__main__':
     # ✅ FIXED: Provide default port for local development
-    port = int(os.getenv('PORT', 5000))  # Default to 5000 if PORT not set
+    port = int(os.getenv('PORT',10000)) 
     debug = os.getenv('FLASK_ENV', 'production') != 'production'
     
     print("=" * 50)

@@ -3,14 +3,17 @@ from flask import current_app
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-import traceback,sys
+import traceback, sys
+
 
 mail = Mail()
 
-def send_contact_notification(name, email,phone, message):
+
+def send_contact_notification(name, email, phone, message):
     """Send email notification when contact form is submitted"""
     try:
-        recipient = current_app.config.get('MAIL_USERNAME')
+        # CHANGE THIS: Send to your Gmail, not MAIL_USERNAME
+        recipient = 'chourasiavarun16@gmail.com'  # YOUR GMAIL ADDRESS
         
         if not recipient:
             print("Email configuration missing")
@@ -72,8 +75,10 @@ def send_contact_notification(name, email,phone, message):
             )
             server.send_message(msg)
         
+        print(f"✅ Email sent successfully to {recipient}")
         return True
         
     except Exception as e:
         traceback.print_exc(file=sys.stderr)
         print("Email sending failed:", str(e), file=sys.stderr)
+        return False

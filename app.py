@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from routes.contact import contact_bp
 from routes.portfolio import portfolio_bp
 from models import db
+from sqlalchemy import text  # ✅ FIXED: was 'test' before, should be 'text'
 
 # Load environment variables
 load_dotenv()
@@ -20,14 +21,17 @@ app = Flask(
 # Configuration
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
-# Render Postgres connection
+# ✅ DATABASE SETUP FOR RENDER
 db_url = os.getenv('DATABASE_URL')
 if db_url and db_url.startswith("postgres://"):
     db_url = db_url.replace("postgres://", "postgresql://", 1)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = db_url + "?sslmode=require"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+if db_url:
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_url + "?sslmode=require"
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///local.db"  # fallback for local dev
 
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Optional: Mail configuration (only if you use Flask-Mail)
 app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER', 'smtp.gmail.com')
@@ -75,11 +79,13 @@ def health_check():
         'status': 'healthy',
         'timestamp': datetime.now().isoformat()
     })
+
+# ✅ TEST DATABASE CONNECTION
 @app.route("/test-db")
 def test_db():
     try:
-        from app import db
-        db.session.execute("SELECT 1")
+        with db.engine.connect() as conn:
+            conn.execute(text("SELECT 1"))
         return "✅ Database connected successfully!"
     except Exception as e:
         return f"❌ Database error: {e}"
@@ -95,6 +101,7 @@ def internal_error(e):
 
 # --- Main Entry Point ---
 if __name__ == '__main__':
-    port = int(os.environ('PORT'))  # Render usually assigns PORT dynamically
+    # ✅ FIXED: use os.getenv, not os.environ()
+    port = int(os.getenv('PORT'))
     debug = os.getenv('FLASK_ENV', 'production') == 'development'
     app.run(host='0.0.0.0', port=port, debug=debug)

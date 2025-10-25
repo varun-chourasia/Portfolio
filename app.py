@@ -31,7 +31,8 @@ if db_url and db_url.startswith("postgres://"):
     db_url = db_url.replace("postgres://", "postgresql://", 1)
 
 if db_url:
-    app.config['SQLALCHEMY_DATABASE_URI'] = db_url  # No sslmode param
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_url + "?sslmode=prefer"
+ # No sslmode param
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///local.db"
 

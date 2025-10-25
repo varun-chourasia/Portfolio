@@ -100,6 +100,6 @@ def internal_error(e):
 
 # --- Main Entry Point ---
 if __name__ == '__main__':
-    port = int(os.getenv('PORT',5000))
+    port = int(os.getenv('PORT'))
     debug = os.getenv('FLASK_ENV', 'production') == 'development'
     app.run(host='0.0.0.0', port=port, debug=debug)

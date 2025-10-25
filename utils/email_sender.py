@@ -3,6 +3,7 @@ from flask import current_app
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import traceback,sys
 
 mail = Mail()
 
@@ -74,5 +75,5 @@ def send_contact_notification(name, email,phone, message):
         return True
         
     except Exception as e:
-        print(f"Email sending failed: {str(e)}")
-        return False
+        traceback.print_exc(file=sys.stderr)
+        print("Email sending failed:", str(e), file=sys.stderr)

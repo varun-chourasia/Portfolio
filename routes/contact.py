@@ -2,9 +2,12 @@ from flask import Blueprint, request, jsonify, current_app
 from models import db, ContactMessage
 from utils.validators import validate_email, validate_phone
 from utils.email_sender import send_contact_notification
+import threading
 import re
 
+
 contact_bp = Blueprint('contact', __name__)
+
 
 @contact_bp.route('/submit', methods=['POST'])
 def submit_contact():
@@ -15,8 +18,8 @@ def submit_contact():
         # Validate required fields
         name = data.get('name', '').strip()
         email = data.get('email', '').strip()
-        phone = data.get('phone', '').strip()
         message = data.get('message', '').strip()
+        phone = data.get('phone', '').strip()
         
         # Validation
         if not name or len(name) < 2:
@@ -25,7 +28,7 @@ def submit_contact():
         if not validate_email(email):
             return jsonify({'error': 'Invalid email address'}), 400
         
-        if not message or len(message) < 10:
+        if not message or len(message) < 5:
             return jsonify({'error': 'Message must be at least 10 characters'}), 400
         
         if phone and not validate_phone(phone):
@@ -42,11 +45,22 @@ def submit_contact():
         db.session.add(contact)
         db.session.commit()
         
-        # Send email notification (optional)
+        # TEMPORARY: Direct email call (no threading) to see errors
         try:
-            send_contact_notification(name, email,phone, message)
+            print("=" * 50)
+            print(f"📧 Attempting direct email send...")
+            print(f"MAIL_SERVER: {current_app.config.get('MAIL_SERVER')}")
+            print(f"MAIL_PORT: {current_app.config.get('MAIL_PORT')}")
+            print(f"MAIL_USERNAME: {current_app.config.get('MAIL_USERNAME')}")
+            print("=" * 50)
+            
+            send_contact_notification(name, email, phone, message)
+            
+            print("✅ Email sent successfully!")
         except Exception as e:
-            print(f"Email notification failed: {str(e)}")
+            print(f"❌ Email error: {str(e)}")
+            import traceback
+            print(traceback.format_exc())
         
         return jsonify({
             'success': True,
@@ -56,7 +70,9 @@ def submit_contact():
         
     except Exception as e:
         db.session.rollback()
+        print(f"❌ Server error: {str(e)}")
         return jsonify({'error': f'Server error: {str(e)}'}), 500
+
 
 @contact_bp.route('/messages', methods=['GET'])
 def get_messages():

@@ -14,14 +14,13 @@ load_dotenv()
 # Initialize Flask app
 app = Flask(
     __name__,
-    static_folder='templates/',
+    static_folder='static/',
     template_folder='templates/'
 )
 
 # Configuration
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
-# ✅ DATABASE SETUP FOR RENDER
 db_url = os.getenv('DATABASE_URL')
 if db_url and db_url.startswith("postgres://"):
     db_url = db_url.replace("postgres://", "postgresql://", 1)

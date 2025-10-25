@@ -13,14 +13,14 @@ PORTFOLIO_DATA = {
         "phone": "+91 975-287-5092",
         "location": "Indore, India",
         "github": "https://github.com/varun-chourasia",
-        "linkedin": "https://linkedin.com/in/varun-chourasia-62b255266",
+        "linkedin": "https://linkedin.com/in/varun-chourasia-62b255266/",
         "twitter": "https://twitter.com/_varunchourasia_"
     },
     "stats": {
         "experience_programs": "2+",
-        "projects": "10+",
-        "certifications": "5+",
-        "cgpa": "7.2"
+        "projects": "15+",
+        "certifications": "7+",
+        "cgpa": "7.42"
     }
 }
 

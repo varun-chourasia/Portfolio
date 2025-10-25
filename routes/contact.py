@@ -2,9 +2,22 @@ from flask import Blueprint, request, jsonify
 from models import db, ContactMessage
 from utils.validators import validate_email, validate_phone
 from utils.email_sender import send_contact_notification
+import threading
 import re
 
+
 contact_bp = Blueprint('contact', __name__)
+
+
+def send_email_async(name, email, phone, message):
+    """Send email in background thread to avoid blocking"""
+    thread = threading.Thread(
+        target=send_contact_notification,
+        args=(name, email, phone, message)
+    )
+    thread.daemon = True
+    thread.start()
+
 
 @contact_bp.route('/submit', methods=['POST'])
 def submit_contact():
@@ -42,9 +55,9 @@ def submit_contact():
         db.session.add(contact)
         db.session.commit()
         
-        # Send email notification (optional)
+        # Send email notification in background (non-blocking)
         try:
-            send_contact_notification(name, email,phone, message)
+            send_email_async(name, email, phone, message)
         except Exception as e:
             print(f"Email notification failed: {str(e)}")
         
@@ -58,6 +71,7 @@ def submit_contact():
         db.session.rollback()
         return jsonify({'error': f'Server error: {str(e)}'}), 500
 
+
 @contact_bp.route('/messages', methods=['GET'])
 def get_messages():
     """Get all contact messages (admin only - add authentication)"""
@@ -70,6 +84,7 @@ def get_messages():
         }), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
 
 @contact_bp.route('/messages/<int:message_id>/read', methods=['PUT'])
 def mark_as_read(message_id):

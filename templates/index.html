@@ -2,9 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
     <title>Varun Choursiya - Data Scientist &amp; Python Developer</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -14,6 +17,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
   </head>
+
   <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -48,7 +52,7 @@
           <div class="profile-photo-container">
             <div class="animated-border"></div>
             <div class="profile-photo">
-              <img src="assets/photo.jpg" alt="Varun Choursiya" />
+              <img src="../static/assets/photo.jpg" alt="Varun Choursiya" />
             </div>
           </div>
         </div>
@@ -155,6 +159,19 @@
           <h2 class="section-title">Skills &amp; Technologies</h2>
           <div class="section-line"></div>
         </div>
+        <!-- Skills Dropdown (visible on mobile) -->
+        <select class="skills-select">
+          <option value="programming">Programming</option>
+          <option value="datascience">Data Science & ML</option>
+          <option value="visualization">Visualization</option>
+          <option value="web">Web Tech</option>
+          <option value="processing">Data Processing</option>
+          <option value="tools">Tools & Platforms</option>
+          <option value="databases">Databases</option>
+          <option value="soft">Soft Skills</option>
+        </select>
+
+        <!-- Original Tabs (visible on desktop) -->
         <div class="skills-tabs">
           <button class="tab-button active" data-tab="programming">
             Programming
@@ -175,6 +192,7 @@
           <button class="tab-button" data-tab="databases">Databases</button>
           <button class="tab-button" data-tab="soft">Soft Skills</button>
         </div>
+
         <div class="skills-grid">
           <!-- Programming Languages -->
           <div class="skill-category" data-category="programming">
@@ -1255,6 +1273,29 @@
       </button>
     </footer>
 
-    <script src="js/app.js"></script>
+    <script src="../static/js/app.js"></script>
+    <script>
+      const skillSelect = document.querySelector(".skills-select");
+      const skillCategories = document.querySelectorAll(".skill-category");
+
+      if (skillSelect) {
+        skillSelect.addEventListener("change", () => {
+          const selected = skillSelect.value;
+
+          skillCategories.forEach((category) => {
+            if (category.dataset.category === selected) {
+              category.style.display = "block";
+            } else {
+              category.style.display = "none";
+            }
+          });
+        });
+
+        // show first category by default on load
+        skillCategories.forEach((cat, i) => {
+          cat.style.display = i === 0 ? "block" : "none";
+        });
+      }
+    </script>
   </body>
 </html>

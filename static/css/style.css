@@ -2427,3 +2427,190 @@ body {
   opacity: 1;
   transform: scale(1);
 }
+
+/* =======================================
+   📱 RESPONSIVE FIXES FOR MOBILE & TABLET
+   ======================================= */
+
+/* ---------- 1️⃣ Universal Styles ---------- */
+
+/* Smooth animations for transitions */
+* {
+  transition: all 0.3s ease;
+}
+
+/* ---------- 2️⃣ Fix Hero Section ---------- */
+@media (max-width: 1024px) {
+  .hero {
+    padding-top: 100px; /* Push content below navbar */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .profile-photo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .profile-photo {
+    max-width: 220px;
+    width: 70%;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  /* Buttons in one row */
+  .hero-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+}
+
+/* ---------- 3️⃣ Skills Section Dropdown ---------- */
+
+/* Hide dropdown by default (desktop view) */
+.skills-select {
+  display: none;
+}
+
+/* Tablet & Mobile view */
+@media (max-width: 1024px) {
+  /* Hide tab buttons */
+  .skills-tabs {
+    display: none;
+  }
+
+  /* Show dropdown selector */
+  .skills-select {
+    display: block;
+    width: 80%;
+    margin: 0 auto var(--space-xl);
+    background: rgba(17, 34, 64, 0.5);
+    border: 1px solid var(--accent-primary);
+    border-radius: var(--border-radius);
+    color: var(--accent-primary);
+    padding: 10px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition-normal);
+  }
+
+  .skills-select:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    background: rgba(17, 34, 64, 0.7);
+  }
+
+  /* Make skills section look good when one category shows */
+  .skills-grid {
+    display: block;
+    opacity: 1;
+    transform-origin: top;
+    transition: opacity 0.4s ease;
+  }
+
+  .skill-category {
+    display: none; /* hidden by default, JS shows selected one */
+    margin-bottom: 40px;
+  }
+
+  .skill-category.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* ---------- 4️⃣ Adjustments for Tablets (≤768px) ---------- */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 90px;
+  }
+
+  .hero-content {
+    gap: var(--space-lg);
+  }
+
+  .hero-greeting {
+    font-size: var(--font-size-3xl);
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-xl);
+  }
+
+  .profile-photo {
+    width: 180px;
+  }
+
+  .skills-select {
+    width: 85%;
+  }
+
+  .skills-grid {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .skills-grid .skill-item {
+    margin-bottom: var(--space-md);
+  }
+}
+
+/* ---------- 5️⃣ Adjustments for Small Phones (≤460px) ---------- */
+@media (max-width: 460px) {
+  .hero {
+    padding-top: 80px;
+  }
+
+  .hero-greeting {
+    font-size: var(--font-size-2xl);
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-lg);
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .skills-select {
+    width: 90%;
+    font-size: var(--font-size-sm);
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  .skill-category {
+    padding: var(--space-sm);
+  }
+
+  .profile-photo {
+    width: 160px;
+  }
+}

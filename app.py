@@ -132,7 +132,7 @@ if __name__ == '__main__':
     print(f"Port: {port}")
     print(f"Debug: {debug}")
     print(f"Database: {app.config['SQLALCHEMY_DATABASE_URI'][:30]}...")
-    print(f"Email Server: {app.config['MAIL_SERVER']}")
+    # print(f"Email Server: {app.config['MAIL_SERVER']}")
     print("=" * 50)
     
     app.run(host='0.0.0.0', port=port, debug=debug)

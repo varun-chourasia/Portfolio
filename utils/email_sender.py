@@ -8,59 +8,60 @@ def send_contact_notification(name, email, phone, message):
     try:
         api_key = os.getenv("BREVO_API_KEY")
         if not api_key:
-            print("Brevo API key missing in environment")
+            print("❌ Missing Brevo API key in environment")
             return False
 
-        sender_email = os.getenv("MAIL_DEFAULT_SENDER")
+        sender_email = os.getenv("MAIL_DEFAULT_SENDER", "no-reply@example.com")
         recipient_email = os.getenv("RECIPIENT_EMAIL", "chourasiavarun16@gmail.com")
 
         url = "https://api.brevo.com/v3/smtp/email"
         headers = {
             "accept": "application/json",
             "content-type": "application/json",
-            "api-key": os.getenv("BREVO_API_KEY")
+            "api-key": api_key
         }
+
         data = {
             "sender": {"name": "Portfolio Contact", "email": sender_email},
-            "to": [{"email": recipient_email, "name": "You"}],
-            "subject": f"New Portfolio Contact: {name}",
+            "to": [{"email": recipient_email, "name": "Varun"}],
+            "subject": f"📬 New Portfolio Contact from {name}",
             "htmlContent": f"""
                 <html>
                     <body style="font-family: Arial, sans-serif;">
-                        <h2 style="color: #00d9ff;">New Contact Form Submission</h2>
-                        <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px;">
+                        <h2 style="color:#00d9ff;">New Contact Form Submission</h2>
+                        <div style="background:#f9f9f9;padding:15px;border-radius:5px;">
                             <p><strong>Name:</strong> {name}</p>
                             <p><strong>Email:</strong> {email}</p>
-                            <p><strong>Number:</strong> {phone}</p>
+                            <p><strong>Phone:</strong> {phone}</p>
                             <p><strong>Message:</strong></p>
-                            <p style="background-color: white; padding: 15px; border-left: 4px solid #00d9ff;">
+                            <div style="background:white;padding:10px;border-left:3px solid #00d9ff;">
                                 {message}
-                            </p>
+                            </div>
                         </div>
-                        <p style="color: #666; font-size: 12px; margin-top: 20px;">
-                            This email was sent from your portfolio contact form.
+                        <p style="font-size:12px;color:#666;margin-top:20px;">
+                            — Sent automatically from your Portfolio Website
                         </p>
                     </body>
                 </html>
             """,
-            "textContent": f"""
-                New Contact Form Submission
-                
-                Name: {name}
-                Email: {email}
-                Phone: {phone}
-
-                Message:
-                {message}
-            """
+            "replyTo": {"email": email, "name": name}
         }
 
-        response = requests.post(url, json=data, headers=headers)
-        print("Brevo API response:", response.status_code, response.text)
-        return response.status_code == 201
+        print("📤 Sending email via Brevo API...")
+        response = requests.post(url, json=data, headers=headers, timeout=10)
 
+        print(f"✅ Brevo Response: {response.status_code}")
+        print(response.text)
+
+        # Brevo API returns 201 if successfully queued
+        if response.status_code == 201:
+            print("🎉 Email sent successfully!")
+            return True
+        else:
+            print(f"⚠️ Email failed: {response.text}")
+            return False
 
     except Exception as e:
         traceback.print_exc(file=sys.stderr)
-        print("Email sending failed:", str(e), file=sys.stderr)
+        print("❌ Email sending failed:", str(e), file=sys.stderr)
         return False

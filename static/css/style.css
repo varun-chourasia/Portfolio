@@ -1095,7 +1095,7 @@ body {
   gap: var(--space-lg);
   justify-content: center;
   opacity: 0;
-  animation: slideInUp 1s ease 1.3s forwards;
+  animation: slideInUp 2s ease 1.3s forwards;
 }
 
 .social-link {
@@ -1116,40 +1116,10 @@ body {
 
 .social-link:hover {
   color: var(--accent-primary);
-  /* transform: translateY(-3px); */
-  transform: scale(1.1);
+  transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(0, 217, 255, 0.3);
 }
 
-.scroll-indicator {
-  position: absolute;
-  bottom: calc(var(--space-2xl) + var(--space-lg));
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  animation: slideInUp 1s ease 1.5s forwards;
-}
-
-.scroll-arrow {
-  width: 2px;
-  height: 30px;
-  background: var(--accent-primary);
-  margin: 0 auto;
-  position: relative;
-  animation: bounce 2s infinite;
-}
-
-.scroll-arrow::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: -3px;
-  width: 8px;
-  height: 8px;
-  border-right: 2px solid var(--accent-primary);
-  border-bottom: 2px solid var(--accent-primary);
-  transform: rotate(45deg);
-}
 
 @keyframes slideInUp {
   from {
@@ -2527,4 +2497,3 @@ body {
   color: #00d9ff;
   text-align: center;
 }
-

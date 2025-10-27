@@ -16,6 +16,20 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-PGGGDPMTJK"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-PGGGDPMTJK");
+    </script>
   </head>
 
   <body>
@@ -52,7 +66,7 @@
           <div class="profile-photo-container">
             <div class="animated-border"></div>
             <div class="profile-photo">
-              <img src="assets/photo.jpg"  alt="Varun Choursiya" />
+              <img src="assets/photo.jpg" alt="Varun Choursiya" />
             </div>
           </div>
         </div>
@@ -67,7 +81,11 @@
           <div class="hero-buttons">
             <a href="#projects" class="btn btn-primary">View Projects</a>
             <a href="#contact" class="btn btn-secondary">Contact Me</a>
-            <a href="/assets/varun.pdf" download="Varun_Choursiya_resume.pdf "class= "btn btn-outline" onclick="downloadResume()"
+            <a
+              href="/assets/varun.pdf"
+              download="Varun_Choursiya_resume.pdf "
+              class="btn btn-outline"
+              onclick="downloadResume()"
               >Download Resume</a
             >
           </div>
@@ -95,9 +113,6 @@
             <i class="fab fa-twitter"></i>
           </a>
         </div>
-      </div>
-      <div class="scroll-indicator">
-        <div class="scroll-arrow"></div>
       </div>
     </section>
 
@@ -1252,7 +1267,10 @@
               >
                 <i class="fab fa-linkedin"></i>
               </a>
-              <a href="https://x.com/Varun160604?t=3prN6NCwT6QOfW-FEZYS2A&s=09" target="_blank">
+              <a
+                href="https://x.com/Varun160604?t=3prN6NCwT6QOfW-FEZYS2A&s=09"
+                target="_blank"
+              >
                 <i class="fab fa-twitter"></i>
               </a>
               <a href="https://wa.me/919752875092" target="_blank">
@@ -1274,7 +1292,7 @@
     </footer>
 
     <script src="js/app.js"></script>
-    <script>
+    <!-- <script>
       const skillSelect = document.querySelector(".skills-select");
       const skillCategories = document.querySelectorAll(".skill-category");
 
@@ -1296,6 +1314,61 @@
           cat.style.display = i === 0 ? "block" : "none";
         });
       }
+    </script> -->
+    <script>
+      /* Lightweight Intersection Observer for reveal animations */
+      (function () {
+        // don't run on old browsers without support
+        if (!("IntersectionObserver" in window)) {
+          document
+            .querySelectorAll(".animate")
+            .forEach((el) => el.classList.add("in-view"));
+          document
+            .querySelectorAll(".cert-card.animate")
+            .forEach((el) => el.classList.add("in-view"));
+          document
+            .querySelectorAll(".timeline-item")
+            .forEach((el) => el.classList.add("in-view"));
+          return;
+        }
+
+        const opts = {
+          root: null,
+          rootMargin: "0px 0px -10% 0px",
+          threshold: 0.12,
+        };
+        const io = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+              observer.unobserve(entry.target); // animate once
+            }
+          });
+        }, opts);
+
+        document
+          .querySelectorAll(".animate, .cert-card.animate, .timeline-item")
+          .forEach((el) => {
+            io.observe(el);
+          });
+
+        // Mobile skills dropdown toggle (expects markup below)
+        document
+          .querySelectorAll(".skill-dropdown .dropdown-btn")
+          .forEach((btn) => {
+            btn.addEventListener("click", () => {
+              const wrapper = btn.closest(".skill-dropdown");
+              wrapper.classList.toggle("open");
+            });
+          });
+
+        // small: apply name-animate only once on load if present
+        const name = document.querySelector(".hero-greeting.name-animate");
+        if (name) {
+          name.classList.add("name-animate--played");
+          // animation handled by CSS; no JS removal required.
+        }
+      })();
     </script>
   </body>
 </html>

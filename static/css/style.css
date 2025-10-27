@@ -300,7 +300,7 @@
 }
 
 /* Base styles */
-html {
+html ,body{
   font-size: var(--font-size-base);
   font-family: var(--font-family-base);
   line-height: var(--line-height-normal);
@@ -308,17 +308,18 @@ html {
   background-color: var(--color-background);
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-}
-
-body {
   margin: 0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
   padding: 0;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 /* Typography */
@@ -1090,7 +1091,7 @@ body {
 }
 
 .social-links {
-  display: flex;
+  display:flex;
   gap: var(--space-lg);
   justify-content: center;
   opacity: 0;
@@ -1115,7 +1116,8 @@ body {
 
 .social-link:hover {
   color: var(--accent-primary);
-  transform: translateY(-3px);
+  /* transform: translateY(-3px); */
+  transform: scale(1.1);
   box-shadow: 0 10px 25px rgba(0, 217, 255, 0.3);
 }
 
@@ -1370,6 +1372,10 @@ body {
   color: var(--text-secondary);
   line-height: 1.8;
   margin-bottom: var(--space-xl);
+}
+
+.skills-select{
+  display:none;
 }
 
 .stats-grid {
@@ -2325,7 +2331,9 @@ body {
     flex-direction: column;
     gap: var(--space-md);
   }
-
+  .hero-photo{
+    margin-top: 22px;
+  }
   /* Profile Photo */
   .profile-photo-container {
     width: 200px;
@@ -2355,7 +2363,7 @@ body {
   }
 
   .stats-grid {
-    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
     gap: var(--space-lg);
   }
 
@@ -2452,13 +2460,15 @@ body {
   }
 
   .profile-photo-container {
-    width: 160px;
-    height: 160px;
+    width: 180px;
+    height: 180px;
   }
-
+  .hero-photo{
+    margin-top: 25px;
+  }
   .profile-photo {
-    width: 140px;
-    height: 140px;
+    width: 180px;
+    height: 180px;
   }
 
   .photo-placeholder {
@@ -2490,3 +2500,31 @@ body {
     left: 4px;
   }
 }
+
+.skills-select {
+  display: none;
+  width: 100%;
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--glass-bg);
+  border: 2px solid var(--accent-primary);
+  color: var(--text-primary);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--space-2xl);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: var(--select-caret-light);
+  background-repeat: no-repeat;
+  background-position: right var(--space-lg) center;
+  background-size: 16px;
+  text-align: center;
+}
+.skills-select option{
+  background-color:#112240;
+  color: #00d9ff;
+  text-align: center;
+}
+

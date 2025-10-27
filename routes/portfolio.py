@@ -14,7 +14,7 @@ PORTFOLIO_DATA = {
         "location": "Indore, India",
         "github": "https://github.com/varun-chourasia",
         "linkedin": "https://linkedin.com/in/varun-chourasia-62b255266/",
-        "twitter": "https://twitter.com/_varunchourasia_"
+        "twitter": "https://x.com/Varun160604?t=3prN6NCwT6QOfW-FEZYS2A&s=09"
     },
     "stats": {
         "experience_programs": "2+",

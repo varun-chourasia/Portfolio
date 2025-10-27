@@ -9,7 +9,7 @@ let backToTopBtn;
 function downloadResume() {
     // Create a temporary link element
     const link = document.createElement('a');
-    link.href = '#'; // Replace with actual resume URL
+    link.href = '/assets/varun.pdf'; // Replace with actual resume URL
     link.download = 'Varun_Choursiya_Resume.pdf';
     
     // Show a message since we don't have an actual file
@@ -20,7 +20,7 @@ function downloadResume() {
     button.disabled = true;
     
     setTimeout(() => {
-        alert('Resume download would start here. Please add your actual resume file URL.');
+        alert('Resume downloaded.');
         button.innerHTML = originalText;
         button.disabled = false;
     }, 1000);

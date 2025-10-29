@@ -18,7 +18,7 @@ It includes a functional contact form powered by the **Brevo API**, allowing dir
 |-----------|--------------|
 | **Frontend** | HTML, CSS, JavaScript |
 | **Backend** | Python (Flask Framework) |
-| **Database** | SQLite |
+| **Database** | PostgreSQL |
 | **Email Service** | Brevo API (formerly Sendinblue) |
 | **Deployment** | Render Cloud Platform |
 | **Version Control** | Git & GitHub |
